@@ -1,16 +1,6 @@
 body{
-    background: url('bg-purple.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
     font-size: 18px;
     font-weight: bold;
-}
-.cover-div{
-    position: absolute;
-    top: 40vh;
-    left: 0;
-    height: 60vh;
-    width: 100vw;
     background-color: hsl(235, 21%, 11%);
 }
 
@@ -18,12 +8,23 @@ i{
     margin: 0px 20px;
     cursor: pointer;
 }
+.background{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    left: 0;
+}
+.bgcontainer{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    height: 350px;
+    overflow: hidden;
+}
 
 .TodoContainer{
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%, -20%);
+    margin-top: 100px;
+    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;

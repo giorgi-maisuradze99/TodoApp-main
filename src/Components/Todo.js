@@ -1,18 +1,25 @@
 import React, { useState } from 'react'
 import './Todo.css'
-
+import bg from './bg-purp.jpg'
 
 function Todo() {
   
   const TodoInput = document.getElementById('TodoInput')
+  const [ isTaskCrossed, setIsTaskCrossed] = useState(false)
   const [ currentTodo, setCurrentTodo ] = useState('')
   const [ todoList, setTodoList ] = useState([])
   
 
-
-
+/*
+  const handleCrossedTask = (isTaskCrossed) =>{
+    setIsTaskCrossed(!isTaskCrossed)
+  }
+  if(isTaskCrossed){
+    console.log('task is crossed')
+  }
+*/
   const handleNewTodo = () => {
-    const listItem = {currentTodo, id: new Date().getTime().toString()}
+    const listItem = { isTaskCrossed, currentTodo, id: new Date().getTime().toString() }
     if(currentTodo !== ''){
       setTodoList((todoList) => {
         return [...todoList, listItem]
@@ -29,15 +36,32 @@ function Todo() {
   const handleClearTodos = () =>{
     setTodoList([])
   }
+
+/*
   TodoInput.addEventListener('keydown', function (e) {
+    console.log('eventlistening');
+    
+    
     if (e.key === 'Enter') {
+      console.log('added Todo');
       handleNewTodo()
     }
   });
-  
+*/
+const onKeyDown = (event) => {
+  // 'keypress' event misbehaves on mobile so we track 'Enter' key via 'keydown' event
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    event.stopPropagation();
+    handleNewTodo();
+  }
+}
   return (
     <>  
-        <span className='cover-div'></span>
+    <div className='bgcontainer'>
+
+        <img src={bg} className='background'></img>
+    </div>
         <div className='TodoContainer'>
             <h1>T O D O</h1>
             <div className='TodoInput' id='TodoInput'>
@@ -47,6 +71,7 @@ function Todo() {
                      type='text' 
                      id='currentTodo'
                      name='currentTodo'
+                     onKeyDown={onKeyDown}
                      onChange={(e) => setCurrentTodo(e.target.value) } 
                      placeholder=' Create a new todo...' 
               />
@@ -54,14 +79,14 @@ function Todo() {
             </div>
             <form className='newTodosContainer' id='newTodosContainer'>
                 {todoList.map((todo) =>{
-                  const {currentTodo, id} = todo;
+                  const {currentTodo, id, isTaskCrossed} = todo;
                   return (
                     <div className='newTodos' key={id}>
                         <i className="fa-regular fa-circle"></i>
                         <p >
                           {currentTodo}
                         </p>
-                        <i class="fa-solid fa-trash" onClick={()=> handleClearTodo(id)}></i>
+                        <i className="fa-solid fa-trash" onClick={()=> handleClearTodo(id)}></i>
                     </div>
                   )
                 })}
