@@ -65,7 +65,9 @@ const onKeyDown = (event) => {
         <div className='TodoContainer'>
             <h1>T O D O</h1>
             <div className='TodoInput' id='TodoInput'>
-              <i className="fa-regular fa-circle" onClick={() => handleNewTodo()}></i>
+             
+                 <i className="fa-regular fa-circle" onClick={() => handleNewTodo()}></i>
+             
               <input 
                      value={currentTodo}
                      type='text' 

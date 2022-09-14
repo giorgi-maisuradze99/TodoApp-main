@@ -30,6 +30,7 @@ i{
     justify-content: center;
     align-items: center;
 }
+
 .TodoContainer .TodoInput{
     display: flex;
     float: left;
