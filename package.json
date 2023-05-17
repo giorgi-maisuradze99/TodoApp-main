@@ -34,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "https://astonishing-daffodil-0a2fdd.netlify.app/",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

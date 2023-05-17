@@ -1,11 +1,33 @@
+:root{
+    --dark-theme-color : #161722;
+    --light-theme-color : #eeeeee;
+}
+
 body{
     font-size: 18px;
     font-weight: bold;
-    background-color: hsl(235, 21%, 11%);
 }
-
+header{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 300px;
+}
+h4{
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    bottom: 0;
+}
 i{
     margin: 0px 20px;
+    cursor: pointer;
+}
+.crossedTodo{
+    text-decoration: line-through;
+    color: grey;
+}
+#clear-all{
     cursor: pointer;
 }
 .background{
@@ -31,15 +53,24 @@ i{
     align-items: center;
 }
 
-.TodoContainer .TodoInput{
+.TodoContainer #todoInputLight{
     display: flex;
     float: left;
-    background-color: hsl(235, 24%, 19%);
+    background-color: var(--light-theme-color);
     width: 300px;
     height: 50px;
     align-items: center;
+    border-radius: 5px;
 }
-
+.TodoContainer #todoInputDark{
+    display: flex;
+    float: left;
+    background-color: var(--dark-theme-color);
+    width: 300px;
+    height: 50px;
+    align-items: center;
+    border-radius: 5px;
+}
 input[type=text]{
     outline: transparent;
     background: transparent;
@@ -57,6 +88,28 @@ input[type=text]:focus{
 h1{
     color: white;
 }
+.todosLight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    background-color: var(--light-theme-color);
+    border-bottom: 1px solid hsl(233deg 60.38% 92.85%);
+    width: 300px;
+    height: 50px;
+}
+.todosDark{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: grey;
+    background-color: var(--dark-theme-color);
+    border-bottom: 1px solid hsl(240, 5%, 22%);
+    width: 300px;
+    height: 50px;
+}
 .newTodosContainer{
     margin-top: 30px;
     position: relative;
@@ -64,20 +117,6 @@ h1{
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-}
-.newTodosContainer .newTodos{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    color: white;
-    background-color: hsl(235, 24%, 19%);
-    border-bottom: 1px solid hsl(233, 15%, 33%);
-    width: 300px;
-    height: 50px;
-}
-.newTodosContainer .newTodos p{
-    white-space: nowrap;
 }
 
 .managingDiv{
@@ -89,6 +128,8 @@ h1{
     justify-content: space-between;
     align-items: center;
     font-size: 15px;
+    border-radius: 0px 0px 5px 5px;
+    font-size: small;
 
 }
 .managingDiv p, a{
